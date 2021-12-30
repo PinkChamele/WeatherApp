@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { AppController } from './app.controller';
@@ -14,18 +14,25 @@ import configuration from 'src/common/configuration';
       isGlobal: true,
       load: [configuration],
     }),
-    TypeOrmModule.forRootAsync({
+    MongooseModule.forRootAsync({
       imports: [ConfigModule],
-      inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
-        type: 'mongodb',
-        url: configService.get('mongodb.url'),
-        useNewUrlParser: true,
-        synchronize: true,
-        logging: true,
-        entities: ['dist/**/*.entity{.ts,.js}'],
+        uri: configService.get('mongodb.uri'),
       }),
+      inject: [ConfigService],
     }),
+    // TypeOrmModule.forRootAsync({
+    //   imports: [ConfigModule],
+    //   inject: [ConfigService],
+    //   useFactory: async (configService: ConfigService) => ({
+    //     type: 'mongodb',
+    //     url: configService.get('mongodb.url'),
+    //     useNewUrlParser: true,
+    //     synchronize: true,
+    //     logging: true,
+    //     entities: ['dist/**/*.entity{.ts,.js}'],
+    //   }),
+    // }),
     V1Module,
   ],
   controllers: [AppController],

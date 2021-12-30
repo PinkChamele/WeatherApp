@@ -13,7 +13,6 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   const options = new DocumentBuilder()
     .setTitle('Api v1')
-    .setDescription('The boilerplate API for nestjs devs')
     .setVersion('1.0')
     .addBearerAuth({ in: 'header', type: 'http' })
     .build();
@@ -22,6 +21,7 @@ async function bootstrap() {
 
   app.useGlobalFilters(new AllExceptionsFilter());
   app.useGlobalPipes(new ValidationPipe({
+    transform: true,
     exceptionFactory: TransformValidationErrors,
   }));
   app.useGlobalFilters(new AllExceptionsFilter(), new ValidationExceptionFilter());

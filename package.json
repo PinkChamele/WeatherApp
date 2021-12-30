@@ -40,6 +40,8 @@
     "undici": "4.12.1"
   },
   "devDependencies": {
+    "@nestjs/mongoose": "^9.0.2",
+    "mongoose": "^6.1.4",
     "@nestjs/cli": "8.0.0",
     "@nestjs/common": "8.0.0",
     "@nestjs/config": "1.1.5",
