@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { WeatherApiService } from './weather-api.service';
 import { WeatherApiController } from './weather-api.controller';
 import WeatherSdkModule from '../weather-sdk/open-weather-sdk.module';
+import { StatisticsModule } from '../statistics/statistics.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import WeatherSdkModule from '../weather-sdk/open-weather-sdk.module';
         host: configService.get('weatherApi.host'),
       }),
     }),
+    StatisticsModule,
   ],
   providers: [WeatherApiService],
   controllers: [WeatherApiController],

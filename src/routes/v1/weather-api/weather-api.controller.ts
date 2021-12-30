@@ -8,7 +8,7 @@ import WrapResponseInterceptor from 'src/interceptors/wrap-response.interceptor'
 import { WeatherByCityNameOptionsDto } from '../weather-sdk/dto/weather-by-city-name-request-options.dto';
 import { WeatherByCityNameResponseDto } from '../weather-sdk/dto/weather-by-city-name-response.dto';
 
-@ApiTags('weather-api')
+@ApiTags('Weather-api')
 @ApiExtraModels(WeatherByCityNameResponseDto)
 @UseInterceptors(WrapResponseInterceptor)
 @Controller()
