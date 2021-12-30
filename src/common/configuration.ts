@@ -1,5 +1,5 @@
 export default () => ({
-  port: Number(process.env.SERVER_PORT) || 3000,
+  port: Number(process.env.PORT) || 3000,
   host: process.env.SERVER_HOST,
   mongodb: {
     url: process.env.MONGODB_URL,
