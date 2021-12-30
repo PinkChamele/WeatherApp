@@ -1,5 +1,6 @@
 import { Document, Types } from 'mongoose';
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
+import { WeatherByCityNameResponseDto } from '../../weather-sdk/dto/weather-by-city-name-response.dto';
 
 export type StatisticRecordDocument = StatisticRecord & Document;
 
@@ -9,6 +10,9 @@ export class StatisticRecord {
 
   @Prop()
   readonly cityName: string = 'string';
+
+  @Prop()
+  readonly weather: WeatherByCityNameResponseDto;
 }
 
 export const StatisticRecordSchema = SchemaFactory.createForClass(StatisticRecord);

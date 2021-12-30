@@ -1,6 +1,6 @@
 import { request } from 'undici';
 
-import { Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 
 import { IWeatherSdkServiceOptions } from './interfaces/weather-api-service-options.interface';
 import { IRequestApiOptions } from './interfaces/request-api-options.interface';
@@ -26,6 +26,10 @@ export default class WeatherSdkService {
         method: requestApiOptions.method,
       },
     );
+
+    if(res.statusCode >= 400) {
+      throw new BadRequestException();
+    }
 
     return res.body.json();
   }
