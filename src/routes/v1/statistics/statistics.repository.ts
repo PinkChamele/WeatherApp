@@ -1,11 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Model, Types } from 'mongoose';
 import PaginationDto from 'src/dto/pagination.dto';
-import { ObjectID } from 'typeorm';
 import { InjectModel } from '@nestjs/mongoose';
 import CreateStatisticRecordDto from './dto/create-statistic-record.dto';
 
-import StatisticRecordEntity from './schemas/statistic-record.entity';
 import { StatisticRecord, StatisticRecordDocument } from './schemas/statistic-record.schema';
 import { IPaginatedEntity } from 'src/interfaces/paginated-entity.interface';
 
